@@ -1,0 +1,5 @@
+agit:
+  company:
+    list:
+      - { id: 1, name: 카카오페이증권, type: SEC }
+
