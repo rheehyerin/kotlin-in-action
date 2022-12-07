@@ -5,8 +5,10 @@ import com.project.agit.common.company.dto.CompanyPerson
 import com.project.agit.common.company.dto.CompanyPersonResponse
 import com.project.agit.common.person.PersonService
 import com.project.agit.common.person.dto.Person
+import mu.KotlinLogging
 import org.springframework.stereotype.Service
-import kotlin.streams.toList
+
+private val log = KotlinLogging.logger {}
 
 @Service
 class CompanyPersonService(
@@ -40,7 +42,7 @@ class CompanyPersonService(
 
         val companyId = companyService.getCompanyInfo(companyName)!!.id
 
-        return companyPersonList.stream()
+        return companyPersonList
             .filter { it.companyId == companyId }
             .map(CompanyPerson::to)
             .toList()
@@ -52,10 +54,8 @@ class CompanyPersonService(
         val personInfo = personService.getPersonInfo(personName)
         personValidationCheck(personInfo, personName)
 
-        return companyPersonList.stream()
-            .filter { it.person.name == personInfo!!.name }
-            .findFirst()
-            .orElse(null)
+        return companyPersonList
+            .firstOrNull { it.person.name == personInfo!!.name }
             ?: throw IllegalArgumentException("입사 이력이 존재하지 않습니다.")
     }
 
@@ -75,16 +75,13 @@ class CompanyPersonService(
         // 기존 입사 상태 체크
         // TODO 동명이인에 대한 케이스 처리 필요
         val companyPerson =
-            companyPersonList.stream()
-                .filter { it.person.name == personInfo!!.name }
-                .findFirst()
-                .orElse(null)
+            companyPersonList.firstOrNull { it.person.name == personInfo.name }
 
         require(
             companyPerson == null || !companyPerson.isJoin
         ) {
             "${personInfo.name} 유저는 이미 " +
-                companyService.getCompany(companyPerson.companyId).name +
+                companyService.getCompany(companyPerson!!.companyId).name +
                 " 회사에 입사한 상태입니다."
         }
     }

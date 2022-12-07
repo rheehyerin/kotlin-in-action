@@ -98,6 +98,9 @@ subprojects {
 
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // json 객체를 kotlin 객체로 읽고 쓰기 위해서 사용
 
+        // logging
+        implementation("io.github.microutils:kotlin-logging-jvm:${Versions.kotlinLogging}")
+
         // test
         // restdocs
         testImplementation("org.springframework.restdocs:spring-restdocs-asciidoctor")
