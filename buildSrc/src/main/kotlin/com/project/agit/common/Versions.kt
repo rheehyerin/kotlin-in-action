@@ -16,6 +16,9 @@ object Versions {
     const val asciidoctor = "3.3.2"
     const val ktlint = "10.3.0"
 
+    // tool
+    const val kotlinLogging = "2.1.23"
+
     // test
     const val springCloudStarterContractStubRunner = "2.2.5.RELEASE"
     const val mockk = "1.12.3"

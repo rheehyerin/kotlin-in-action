@@ -9,9 +9,6 @@ class PersonService(
     private val personProperty: PersonProperty
 ) {
     fun getPersonInfo(personName: String): Person? {
-        return personProperty.list.stream()
-            .filter { it.name == personName }
-            .findFirst()
-            .orElse(null)
+        return personProperty.list.firstOrNull { it.name == personName }
     }
 }

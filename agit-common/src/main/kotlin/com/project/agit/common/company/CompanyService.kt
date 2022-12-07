@@ -5,14 +5,13 @@ import com.project.agit.common.company.dto.CompanyRequest
 import com.project.agit.common.company.dto.CompanyResponse
 import com.project.agit.common.property.CompanyProperty
 import org.springframework.stereotype.Service
-import java.util.stream.Collectors
 
 @Service
 class CompanyService(
     private val companyProperty: CompanyProperty
 ) {
     fun getCompany(companyId: Long): Company {
-        return companyProperty.list.stream().filter { it.id == companyId }.findFirst().orElseThrow()
+        return companyProperty.list.first { it.id == companyId }
     }
 
     fun registerCompany(request: CompanyRequest): Company {
@@ -28,21 +27,19 @@ class CompanyService(
     }
 
     fun getCompanyInfo(companyName: String): Company? {
-        return companyProperty.list.stream()
-            .filter { it.name == companyName }
-            .findFirst()
-            .orElse(null)
+        return companyProperty.list
+            .first { it.name == companyName }
     }
 
     fun getCompanyAll(): List<CompanyResponse> {
-        return companyProperty.list.stream().map(Company::to).collect(Collectors.toList())
+        return companyProperty.list.map(Company::to).toList()
     }
 
     internal fun throwIfExistCompanyName(
         name: String,
         message: String = "기존에 동일한 회사 이름이 있습니다."
     ) {
-        require(companyProperty.list.stream().filter { it.name == name }.findFirst().isEmpty) {
+        require(companyProperty.list.firstOrNull { it.name == name } == null) {
             message
         }
     }
