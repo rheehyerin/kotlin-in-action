@@ -3,3 +3,8 @@ agit:
     list:
       - { id: 1, name: 카카오페이증권, type: SEC }
 
+  person:
+    list:
+      - { name: brett, age: 31, location: LOBBY }
+      - { name: codd, age: 31, location: LOBBY }
+      - { name: senna, age: 31, location: LOBBY }

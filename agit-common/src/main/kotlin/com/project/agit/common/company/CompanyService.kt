@@ -27,8 +27,11 @@ class CompanyService(
         return newCompany
     }
 
-    fun getCompanyInfo(companyName: String): Company {
-        return companyProperty.list.stream().filter { it.name == companyName }.findFirst().orElseThrow()
+    fun getCompanyInfo(companyName: String): Company? {
+        return companyProperty.list.stream()
+            .filter { it.name == companyName }
+            .findFirst()
+            .orElse(null)
     }
 
     fun getCompanyAll(): List<CompanyResponse> {
