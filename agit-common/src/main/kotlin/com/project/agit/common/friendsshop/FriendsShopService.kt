@@ -15,7 +15,7 @@ class FriendsShopService() {
             ProductType.DOLL -> FriendsShopBook.Dolls
                     .find { it.productName == product.productName }
                     ?.let{ it.counts-- }  ?: throw IllegalArgumentException("No Dolls ${product.productName}")
-            ProductType.TUMBLER -> FriendsShopBook.TumberSets
+            ProductType.TUMBLER -> FriendsShopBook.TumblerSets
                 .find { it.productName == product.productName }
                 ?.let{ it.counts-- } ?: throw IllegalArgumentException("No Tumbler the name of ${product.productName}")
             else -> throw IllegalArgumentException("None Product Type ${product.productName}")

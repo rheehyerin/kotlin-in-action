@@ -30,7 +30,7 @@ class FriendsShopController (
     @PostMapping("/buy")
     fun buyProduct(
             @RequestBody request: FriendsShopReqeust
-    ) = with(friendsShopService.buyProduct(request)) {
+    ) : Unit = with(friendsShopService.buyProduct(request)) {
         FriendsShopResponse.from(this)
     }
 
@@ -39,6 +39,6 @@ class FriendsShopController (
 
     @GetMapping("/productList")
     fun getProductList() : String {
-        return FriendsShopBook.Dolls.toString() + FriendsShopBook.TumberSets.toString()
+        return FriendsShopBook.Dolls.toString() + FriendsShopBook.TumblerSets.toString()
     }
 }
