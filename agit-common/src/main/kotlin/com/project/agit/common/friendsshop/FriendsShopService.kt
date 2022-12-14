@@ -16,7 +16,7 @@ class FriendsShopService() {
                     .find { it.productName == product.productName }
                     ?.let{ it.counts-- }  ?: throw IllegalArgumentException("No Dolls ${product.productName}")
             ProductType.TUMBLER -> FriendsShopBook.TumberSets
-                .find { it.productName == product.personName }
+                .find { it.productName == product.productName }
                 ?.let{ it.counts-- } ?: throw IllegalArgumentException("No Tumbler the name of ${product.productName}")
             else -> throw IllegalArgumentException("None Product Type ${product.productName}")
         }
@@ -24,6 +24,7 @@ class FriendsShopService() {
         return product.productName
     }
 
+   /*
     fun showList() : List<String> {
         var productList = mutableListOf<String>()
         var iterator = FriendsShopBook.Dolls?.iterator()
@@ -32,4 +33,5 @@ class FriendsShopService() {
 
         }
     }
+    */
 }
