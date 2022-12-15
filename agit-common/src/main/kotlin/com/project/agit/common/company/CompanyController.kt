@@ -24,7 +24,7 @@ class CompanyController(
     }
 
     @PostMapping("")
-    fun createCompany(
+    fun registerCompany(
         @RequestBody request: CompanyRequest
     ) = with(companyService.registerCompany(request)) {
         CompanyResponse.from(this)

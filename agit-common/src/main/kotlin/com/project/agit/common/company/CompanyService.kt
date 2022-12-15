@@ -28,7 +28,7 @@ class CompanyService(
 
     fun getCompanyInfo(companyName: String): Company? {
         return companyProperty.list
-            .first { it.name == companyName }
+            .firstOrNull { it.name == companyName }
     }
 
     fun getCompanyAll(): List<CompanyResponse> {
