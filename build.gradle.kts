@@ -101,6 +101,9 @@ subprojects {
         // logging
         implementation("io.github.microutils:kotlin-logging-jvm:${Versions.kotlinLogging}")
 
+        // swagger
+        implementation("org.springdoc:springdoc-openapi-ui:${Versions.swagger}")
+
         // test
         // restdocs
         testImplementation("org.springframework.restdocs:spring-restdocs-asciidoctor")

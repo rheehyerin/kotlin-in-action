@@ -18,6 +18,7 @@ object Versions {
 
     // tool
     const val kotlinLogging = "2.1.23"
+    const val swagger = "1.6.7"
 
     // test
     const val springCloudStarterContractStubRunner = "2.2.5.RELEASE"
