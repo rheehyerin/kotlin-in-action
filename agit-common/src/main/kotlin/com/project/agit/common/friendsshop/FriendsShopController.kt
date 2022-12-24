@@ -1,20 +1,24 @@
 package com.project.agit.common.friendsshop
 
-
 import com.project.agit.common.friendsshop.dto.FriendsShopBook
 import com.project.agit.common.friendsshop.dto.FriendsShopBook.OrderBook
 import com.project.agit.common.friendsshop.dto.FriendsShopReqeust
 import com.project.agit.common.friendsshop.dto.FriendsShopResponse
 import com.project.agit.common.friendsshop.dto.ProductType
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
 @RestController
 @RequestMapping("/friendsshop")
-class FriendsShopController (
+class FriendsShopController(
     private val friendsShopService: FriendsShopService
-    ) {
+) {
     @GetMapping()
-    fun ping2() : String {
+    fun ping2(): String {
         return "friendsshop"
     }
 
@@ -29,16 +33,16 @@ class FriendsShopController (
 
     @PostMapping("/buy")
     fun buyProduct(
-            @RequestBody request: FriendsShopReqeust
-    ) : Unit = with(friendsShopService.buyProduct(request)) {
+        @RequestBody request: FriendsShopReqeust
+    ): Unit = with(friendsShopService.buyProduct(request)) {
         FriendsShopResponse.from(this)
     }
 
     @GetMapping("/all")
-    fun getOrderBook() : List<String> = OrderBook
+    fun getOrderBook(): List<String> = OrderBook
 
     @GetMapping("/productList")
-    fun getProductList() : String {
+    fun getProductList(): String {
         return FriendsShopBook.Dolls.toString() + FriendsShopBook.TumblerSets.toString()
     }
 }

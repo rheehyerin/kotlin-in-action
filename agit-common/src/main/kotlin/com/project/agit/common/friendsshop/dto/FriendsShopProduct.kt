@@ -1,6 +1,5 @@
 package com.project.agit.common.friendsshop.dto
 
-
 interface FriendsShopProduct {
     val productType: ProductType
     val productName: String
@@ -21,25 +20,25 @@ class Product : FriendsShopProduct {
     }
 }
 
-class DollDecorator (
+class DollDecorator(
     private val product: Product
-    ) : FriendsShopProduct by product {
+) : FriendsShopProduct by product {
     override val productType: ProductType = ProductType.DOLL
 }
 
-class TumblerDecorator (
+class TumblerDecorator(
     private val product: Product
 ) : FriendsShopProduct by product {
     override val productType: ProductType = ProductType.TUMBLER
 }
 
-class StickerDecorator (
+class StickerDecorator(
     private val product: Product
 ) : FriendsShopProduct by product {
     override val productType: ProductType = ProductType.STICKER
 }
 
-class PenDecorator (
+class PenDecorator(
     private val product: Product
 ) : FriendsShopProduct by product {
     override val productType: ProductType = ProductType.PEN
