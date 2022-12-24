@@ -14,6 +14,8 @@ buildscript {
         classpath("org.jetbrains.kotlin:kotlin-allopen:${com.project.agit.common.Versions.kotlin}")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${com.project.agit.common.Versions.kotlin}")
         classpath("org.asciidoctor:asciidoctor-gradle-jvm:${com.project.agit.common.Versions.asciidoctor}")
+        classpath("org.flywaydb:flyway-mysql:${com.project.agit.common.Versions.flyway}")
+        classpath("mysql:mysql-connector-java:${com.project.agit.common.Versions.mysql}")
     }
 }
 
@@ -29,6 +31,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version com.project.agit.common.Versions.ktlint
     id("org.jlleitschuh.gradle.ktlint-idea") version com.project.agit.common.Versions.ktlint
     id("org.asciidoctor.jvm.convert") version com.project.agit.common.Versions.asciidoctor
+    id("org.flywaydb.flyway") version com.project.agit.common.Versions.flyway
 }
 
 allOpen {
@@ -104,6 +107,9 @@ subprojects {
         // swagger
         implementation("org.springdoc:springdoc-openapi-ui:${Versions.swagger}")
 
+        // flyway
+        implementation("org.flywaydb:flyway-core:${Versions.flyway}")
+
         // test
         // restdocs
         testImplementation("org.springframework.restdocs:spring-restdocs-asciidoctor")
@@ -145,4 +151,8 @@ subprojects {
             }
         }
     }
+}
+
+flyway {
+    locations = arrayOf("filesystem:${file("flyway/migration").absolutePath}")
 }
