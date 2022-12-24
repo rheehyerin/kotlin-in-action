@@ -1,25 +1,52 @@
 # agit
+-- --
 아지트 프로젝트
 
 ## Structure
+-- --
 ```bash
  agit
    ├-- agit-common
 ```
 
+## Using docker for infrastructure
+-- --
+### Run MySql
+```bash
+$ cd docker
+$ docker-compose up -d정
+```
+
+## DB migration
+-- --
+### Support tasks
+* flywayMigrate
+* flywayClean
+* flywayBaseline
+* flywayInfo
+* flywayValidate
+
+### Usage
+```bash
+$ cd $PROJECT_DIR
+$ ./gradlew -Dflyway.configFiles=flyway/configs/local.conf flywayMigrate
+```
+
 ## Test
+-- --
 ```bash
 ./gradlew test
 ./gradlew :agit-common:test
 ```
 
 ## 실행
+-- --
 ```bash
 ./gradlew :agit-common:bootRun --args='--spring.profiles.active=local'
 ```
 
-
 ## ktlint
+-- --
 ### (설정필수)Intellij code style 설정
 Intellij code style 설정을 ktlint의 규칙과 맞도록 설정.
 ```bash
@@ -45,6 +72,8 @@ $ cd $PROJECT_DIR
 $ ./gradlew ktlintFormat
 ```
 
+## Swagger
+-- --
 ### [Swagger URL](http://localhost:8080/swagger-ui/index.html)
 ```bash
 http://localhost:8080/swagger-ui/index.html

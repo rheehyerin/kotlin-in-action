@@ -20,6 +20,12 @@ object Versions {
     const val kotlinLogging = "2.1.23"
     const val swagger = "1.6.7"
 
+    // flyway
+    const val flyway = "9.8.1"
+
+    // mysql
+    const val mysql = "8.0.26"
+
     // test
     const val springCloudStarterContractStubRunner = "2.2.5.RELEASE"
     const val mockk = "1.12.3"
