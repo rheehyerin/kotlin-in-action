@@ -9,6 +9,29 @@
    ├-- agit-common
 ```
 
+## Using docker for infrastructure
+-- --
+### Run MySql
+```bash
+$ cd docker
+$ docker-compose up -d정
+```
+
+## DB migration
+-- --
+### Support tasks
+* flywayMigrate
+* flywayClean
+* flywayBaseline
+* flywayInfo
+* flywayValidate
+
+### Usage
+```bash
+$ cd $PROJECT_DIR
+$ ./gradlew -Dflyway.configFiles=flyway/configs/local.conf flywayMigrate
+```
+
 ## Test
 -- --
 ```bash
@@ -54,19 +77,4 @@ $ ./gradlew ktlintFormat
 ### [Swagger URL](http://localhost:8080/swagger-ui/index.html)
 ```bash
 http://localhost:8080/swagger-ui/index.html
-```
-
-## DB migration
--- --
-### Support tasks
-* flywayMigrate
-* flywayClean
-* flywayBaseline
-* flywayInfo
-* flywayValidate
-
-### Usage
-```bash
-$ cd $PROJECT_DIR
-$ ./gradlew -Dflyway.configFiles=flyway/configs/local.conf flywayMigrate
 ```
