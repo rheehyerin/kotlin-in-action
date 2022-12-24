@@ -5,10 +5,10 @@ import com.project.agit.common.company.dto.CompanyPerson
 import com.project.agit.common.company.dto.CompanyPersonResponse
 import com.project.agit.common.person.PersonService
 import com.project.agit.common.person.dto.Person
-//import mu.KotlinLogging
+// import mu.KotlinLogging
 import org.springframework.stereotype.Service
 
-//private val log = KotlinLogging.logger {}
+// private val log = KotlinLogging.logger {}
 
 @Service
 class CompanyPersonService(
