@@ -14,7 +14,7 @@
 ### Run MySql
 ```bash
 $ cd docker
-$ docker-compose up -d정
+$ docker-compose up -d
 ```
 
 ## DB migration
